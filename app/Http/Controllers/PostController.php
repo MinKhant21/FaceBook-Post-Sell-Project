@@ -61,4 +61,9 @@ class PostController extends Controller
            })->addIndexColumn()
            ->rawColumns(['status', 'action', 'image'])->make(true);
     }
+
+    public function profile()
+    {
+        return view('profile.index');
+    }
 }

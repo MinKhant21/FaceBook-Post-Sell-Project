@@ -29,6 +29,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('post',PostController::class);
 Route::post('/getall',[PostController::class,'getall'])->name('getall');
+
+Route::get('/profile',[PostController::class,'profile'])->name('profile');
+
+
 //Facebook
 Route::get('/login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);

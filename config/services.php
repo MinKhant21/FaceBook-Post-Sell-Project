@@ -25,9 +25,9 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
     'facebook' => [
-        'client_id' => env('653320760041809'),
-        'client_secret' => env('821797a9832f315384e48df1cbd3790f'),
-        'redirect' => 'home',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
      ],
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
