@@ -62,8 +62,5 @@ class PostController extends Controller
            ->rawColumns(['status', 'action', 'image'])->make(true);
     }
 
-    public function profile()
-    {
-        return view('profile.index');
-    }
+   
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('post',PostController::class);
 Route::post('/getall',[PostController::class,'getall'])->name('getall');
 
-Route::get('/profile',[PostController::class,'profile'])->name('profile');
+Route::resource('profile',ProfileController::class);
+Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
 
 
 //Facebook
