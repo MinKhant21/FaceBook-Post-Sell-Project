@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,15 +28,21 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('/post',[PostController::class,'index']);
+Route::middleware('auth')->group(function()
+{
+    Route::resource('post',PostController::class);
+    Route::post('/getall',[PostController::class,'getall'])->name('getall');
+    Route::post('/getmodal', [PostController::class,'getmodal'])->name('getmodal');
 
-Route::resource('post',PostController::class);
-Route::post('/getall',[PostController::class,'getall'])->name('getall');
+    Route::resource('profile',ProfileController::class);
+    Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
 
-Route::resource('profile',ProfileController::class);
-Route::get('/profile',[ProfileController::class,'profile'])->name('profile');
+    // Route::get('profile', 'ProfileController@index')->name('profile');
+    Route::get('/facebook', [ProfileController::class,'redirectToFacebookProvider'])->name('facebook');
+    Route::get('/facebook/callback',[ProfileController::class,'handleProviderFacebookCallback']);
+    Route::post('facebook_page_id', [ProfileController::class,'facebook_page_id'])->name('facebook_page_id');
+    
+    Route::post('page',[GraphController::class,'publishToPage'])->name('page');
+});
 
 
-//Facebook
-Route::get('/login/facebook', [App\Http\Controllers\Auth\LoginController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('/login/facebook/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleFacebookCallback']);
-//Github

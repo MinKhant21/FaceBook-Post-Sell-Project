@@ -31,7 +31,7 @@
                 </div>
             @endif
 
-            <h1><a href="{{route('login.facebook')}}" style="color: white">facebook</a></h1>
+            {{-- <h1><a href="{{route('login.facebook')}}" style="color: white">facebook</a></h1> --}}
         </div>
     </body>
 </html>
