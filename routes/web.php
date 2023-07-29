@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(function()
     Route::post('facebook_page_id', [ProfileController::class,'facebook_page_id'])->name('facebook_page_id');
     
     Route::post('page',[GraphController::class,'publishToPage'])->name('page');
+
+    Route::get('auth/facebook',function(){
+        return Socialite::driver('facebook')->redirect();
+    });
 });
 
 
