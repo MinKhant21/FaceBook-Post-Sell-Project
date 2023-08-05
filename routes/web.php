@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GraphController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
